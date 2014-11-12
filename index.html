@@ -23,11 +23,16 @@
         <li><a href='{{html_url}}'>{{filename}}</a> {{language}} {{size}} <a href="{{raw_url}}">raw</a></li>
     </script>
 
+    <script type="text/tim" id="filediv">
+        <div style="color:#{{color}};"><a href='{{url}}'>{{name}}</a></div>
+    </script>
+
     <!-- scripts -->
 
     <script type="text/javascript">
       var gist = document.getElementById("gistdiv").innerHTML;
       var file = document.getElementById("filediv").innerHTML;
+      var label = document.getElementById("labels").innerHTML;
 
       // getURLInfo() completes immediately...
       getAPI(
@@ -62,12 +67,12 @@
                   }
                 }
               );
-              // var singlef = '';
-              // for (var f in obj['files']) {
-              //   if (obj['files'].hasOwnProperty(f)){
-              //     singlef += tim(file, obj['files'][f]);
-              //   }
-              // };
+              var singlel = '';
+              for (var f in obj['labels']) {
+                if (obj['labels'].hasOwnProperty(f)){
+                  singlef += tim(label, obj['labels'][f]);
+                }
+              };
               //var rep = tim(gist, obj);
               //document.getElementById("gists").innerHTML += rep;
             }
