@@ -10,36 +10,32 @@
   </head>
   <body>
     <div id="issues"></div>
-    <div id="milestones"></div>
 
     <!-- templates -->
 
-    <script type="text/tim" id="labels">
-      <div style="background-color:#{{color}};"><p>{{name}}</p></div>
+    <script type="text/tim" id="tim_labels">
+      <span style="background-color:#{{color}};">{{name}}</span>
     </script>
 
-    <script type="text/tim" id="milediv">
-      <div>
-        <p><strong>{{title}}</strong> {{description}}</p>
-      </div>
+    <script type="text/tim" id="tim_mile">
+      , <strong>{{title}}</strong> {{description}}
     </script>
 
-    <script type="text/tim" id="issuediv">
+    <script type="text/tim" id="tim_issue">
       <div>
         <h3><a href='{{html_url}}'>{{title}}</a></h3>
-        <small>{{created_at}}, {{timedate}}</small>
         {{body_html}}
-        Labels: {{html_labels}}
-        Milestone: {{html_milestone}}
+        <small>{{timedate}}</small>
+        <p>{{html_labels}} {{html_milestone}}</p>
       </div>
     </script>
 
     <!-- scripts -->
 
     <script type="text/javascript">
-      var label = document.getElementById("labels").innerHTML;
-      var milediv = document.getElementById("milediv").innerHTML;
-      var issuediv = document.getElementById("issuediv").innerHTML;
+      var timlabel = document.getElementById("tim_labels").innerHTML;
+      var timmile = document.getElementById("tim_mile").innerHTML;
+      var timissue = document.getElementById("tim_issue").innerHTML;
 
       // getURLInfo() completes immediately...
       getAPI(
@@ -55,13 +51,13 @@
               var singlel = '';
               for (var f in obj['labels']) {
                 if (obj['labels'].hasOwnProperty(f)){
-                  singlel += tim(label, obj['labels'][f]);
+                  singlel += tim(timlabel, obj['labels'][f]);
                 }
               };
               obj['html_labels'] = singlel;
               obj['timedate'] = new Date(Date.parse(obj['created_at']));
-              obj['html_milestone'] = tim(milediv, obj['milestone']);
-              var rep = tim(issuediv, obj);
+              obj['html_milestone'] = tim(timmile, obj['milestone']);
+              var rep = tim(timissue, obj);
               document.getElementById("issues").innerHTML += rep;
             }
           }
