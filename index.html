@@ -15,23 +15,22 @@
     <!-- templates -->
 
     <script type="text/tim" id="labels">
-      <div style="background-color:#{{color}};">{{name}}</div>
+      <div style="background-color:#{{color}};"><p>{{name}}</p></div>
     </script>
 
     <script type="text/tim" id="milediv">
       <div>
-        <h4>{{title}}</h4>
-        <p>{{description}}</p>
+        <p><strong>{{title}}</strong> {{description}}</p>
       </div>
     </script>
 
     <script type="text/tim" id="issuediv">
       <div>
         <h3><a href='{{html_url}}'>{{title}}</a></h3>
-        <small>{{created_at}}</small>
+        <small>{{created_at}}, {{timedate}}</small>
         {{body_html}}
-        {{html_labels}}
-        {{html_milestones}}
+        Labels: {{html_labels}}
+        Milestone: {{html_milestone}}
       </div>
     </script>
 
@@ -60,7 +59,8 @@
                 }
               };
               obj['html_labels'] = singlel;
-              obj['html_milestones'] = tim(milediv, obj['milestone']);
+              obj['timedate'] = Reduce(obj['created_at']);
+              obj['html_milestone'] = tim(milediv, obj['milestone']);
               var rep = tim(issuediv, obj);
               document.getElementById("issues").innerHTML += rep;
             }
@@ -69,7 +69,7 @@
       );
 
       function Reduce(time){
-        return new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")).toISOString().slice(0, 20)
+        return Date.parse(time);
       }
     </script>
   </body>
