@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <title>diarissues</title>
+    <description>Get a diary with Issues and Milestones</description>
   </head>
   <body>
-    <div id="gists"></div>
+    <div id="issues"></div>
+    <div id="milestones"></div>
 
     <!-- files -->
 
@@ -27,58 +30,67 @@
         <div style="color:#{{color}};"><a href='{{url}}'>{{name}}</a></div>
     </script>
 
+    <script type="text/tim" id="milediv">
+      <div>
+        <h5><a href='{{url}}'>{{title}}</a></h5>
+        <p>{{description}}</p>
+        <small>{{created_at}}</small>
+      </div>
+    </script>
+
     <!-- scripts -->
 
     <script type="text/javascript">
       var gist = document.getElementById("gistdiv").innerHTML;
       var file = document.getElementById("filediv").innerHTML;
       var label = document.getElementById("labels").innerHTML;
+      var milediv = document.getElementById("miledvi").innerHTML;
+      var issuediv = document.getElementById("issues").innerHTML;
 
       // getURLInfo() completes immediately...
       getAPI(
         "repos/petrosh/diarissues/issues",
         // ...however, the callback function is invoked AFTER the response arrives
         function() {
+          // so we go for the second
+          getSecondAPI();
           // "this" is the XHR object here!
           var resp = JSON.parse(this.responseText);
           for (var key in resp) {
             if (resp.hasOwnProperty(key)) {
               var obj = resp[key];
               console.log(obj);
-              getAPI(
-                "repos/petrosh/diarissues/milestones",
-                // ...however, the callback function is invoked AFTER the response arrives
-                function() {
-                  // "this" is the XHR object here!
-                  var resp = JSON.parse(this.responseText);
-                  for (var key in resp) {
-                    if (resp.hasOwnProperty(key)) {
-                      var obj = resp[key];
-                      console.log(obj);
-                      // var singlef = '';
-                      // for (var f in obj['files']) {
-                      //   if (obj['files'].hasOwnProperty(f)){
-                      //     singlef += tim(file, obj['files'][f]);
-                      //   }
-                      // };
-                      //var rep = tim(gist, obj);
-                      //document.getElementById("gists").innerHTML += rep;
-                    }
-                  }
-                }
-              );
               var singlel = '';
               for (var f in obj['labels']) {
                 if (obj['labels'].hasOwnProperty(f)){
                   singlel += tim(label, obj['labels'][f]);
                 }
               };
-              //var rep = tim(gist, obj);
-              //document.getElementById("gists").innerHTML += rep;
+              var rep = tim(issuediv, obj);
+              document.getElementById("issues").innerHTML += rep;
             }
           }
         }
       );
+
+      function getSecondAPI(){
+        getAPI(
+          "repos/petrosh/diarissues/milestones",
+          // ...however, the callback function is invoked AFTER the response arrives
+          function() {
+            // "this" is the XHR object here!
+            var resp = JSON.parse(this.responseText);
+            for (var key in resp) {
+              if (resp.hasOwnProperty(key)) {
+                var obj = resp[key];
+                console.log(obj);
+                var mile = tim(milediv, obj);
+                document.getElementById("milestones").innerHTML += mile;
+              }
+            }
+          }
+        );
+      }
     </script>
   </body>
 </html>
