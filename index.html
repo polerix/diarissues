@@ -15,23 +15,23 @@
     <!-- templates -->
 
     <script type="text/tim" id="labels">
-        <div style="color:#{{color}};"><a href='{{url}}'>{{name}}</a></div>
+        <div style="baclground-color:#{{color}};">{{name}}</div>
     </script>
 
     <script type="text/tim" id="milediv">
       <div>
-        <h5><a href='{{url}}'>{{title}}</a></h5>
+        <h4>{{title}}</h4>
         <p>{{description}}</p>
-        <small>{{created_at}}</small>
       </div>
     </script>
 
     <script type="text/tim" id="issuediv">
       <div>
-        <h5><a href='{{html_url}}'>{{title}}</a></h5>
+        <h3><a href='{{html_url}}'>{{title}}</a></h3>
+        <small>{{created_at}}</small>
         {{body_html}}
         {{html_labels}}
-        <small>{{created_at}}</small>
+        {{html_milestones}}
       </div>
     </script>
 
@@ -47,8 +47,6 @@
         "repos/petrosh/diarissues/issues",
         // ...however, the callback function is invoked AFTER the response arrives
         function() {
-          // so we go for the second
-          getSecondAPI();
           // "this" is the XHR object here!
           var resp = JSON.parse(this.responseText);
           for (var key in resp) {
@@ -62,31 +60,19 @@
                 }
               };
               obj['html_labels'] = singlel;
+              var singlem = '';
+              for (var m in obj['milestone']) {
+                if (obj['milestone'].hasOwnProperty(m)){
+                  singlem += tim(milediv, obj['milestone'][m]);
+                }
+              };
+              obj['html_milestones'] = singlem;
               var rep = tim(issuediv, obj);
               document.getElementById("issues").innerHTML += rep;
             }
           }
         }
       );
-
-      function getSecondAPI(){
-        getAPI(
-          "repos/petrosh/diarissues/milestones",
-          // ...however, the callback function is invoked AFTER the response arrives
-          function() {
-            // "this" is the XHR object here!
-            var resp = JSON.parse(this.responseText);
-            for (var key in resp) {
-              if (resp.hasOwnProperty(key)) {
-                var obj = resp[key];
-                console.log(obj);
-                var mile = tim(milediv, obj);
-                document.getElementById("milestones").innerHTML += mile;
-              }
-            }
-          }
-        );
-      }
 
       function Reduce(time){
         return new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")).toISOString().slice(0, 20)
