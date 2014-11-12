@@ -15,7 +15,7 @@
     <!-- templates -->
 
     <script type="text/tim" id="labels">
-        <div style="baclground-color:#{{color}};">{{name}}</div>
+      <div style="baclground-color:#{{color}};">{{name}}</div>
     </script>
 
     <script type="text/tim" id="milediv">
@@ -60,13 +60,7 @@
                 }
               };
               obj['html_labels'] = singlel;
-              var singlem = '';
-              for (var m in obj['milestone']) {
-                if (obj['milestone'].hasOwnProperty(m)){
-                  singlem += tim(milediv, obj['milestone'][m]);
-                }
-              };
-              obj['html_milestones'] = singlem;
+              obj['html_milestones'] = tim(milediv, obj['milestone'];
               var rep = tim(issuediv, obj);
               document.getElementById("issues").innerHTML += rep;
             }
