@@ -41,6 +41,7 @@
       <div>
         <h5><a href='{{html_url}}'>{{title}}</a></h5>
         {{body_html}}
+        {{html_labels}}
         <small>{{created_at}}</small>
       </div>
     </script>
@@ -48,8 +49,6 @@
     <!-- scripts -->
 
     <script type="text/javascript">
-      var gist = document.getElementById("gistdiv").innerHTML;
-      var file = document.getElementById("filediv").innerHTML;
       var label = document.getElementById("labels").innerHTML;
       var milediv = document.getElementById("milediv").innerHTML;
       var issuediv = document.getElementById("issuediv").innerHTML;
@@ -73,6 +72,7 @@
                   singlel += tim(label, obj['labels'][f]);
                 }
               };
+              obj['html_labels'] = singlel;
               var rep = tim(issuediv, obj);
               document.getElementById("issues").innerHTML += rep;
             }
@@ -97,6 +97,10 @@
             }
           }
         );
+      }
+
+      function Reduce(time){
+        return new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")).toISOString().slice(0, 20)
       }
     </script>
   </body>
