@@ -59,7 +59,7 @@
                 }
               };
               obj['html_labels'] = singlel;
-              obj['timedate'] = Reduce(obj['created_at']);
+              obj['timedate'] = new Date(Date.parse(obj['created_at']));
               obj['html_milestone'] = tim(milediv, obj['milestone']);
               var rep = tim(issuediv, obj);
               document.getElementById("issues").innerHTML += rep;
@@ -67,10 +67,6 @@
           }
         }
       );
-
-      function Reduce(time){
-        return Date.parse(time);
-      }
     </script>
   </body>
 </html>
