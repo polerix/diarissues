@@ -4,12 +4,12 @@
   </head>
   <body>
     <div id="gists"></div>
-    
+
     <!-- files -->
-    
+
     <script src="tinytim.min.js"></script>
     <script src="ghre.js"></script>
-    
+
     <!-- templates -->
 
     <script type="text/tim" id="gistdiv">
@@ -18,34 +18,35 @@
           <ul class="files">{{files}}</ul>
         </div>
     </script>
-    
+
     <script type="text/tim" id="filediv">
         <li><a href='{{html_url}}'>{{filename}}</a> {{language}} {{size}} <a href="{{raw_url}}">raw</a></li>
     </script>
-    
+
     <!-- scripts -->
-    
+
     <script type="text/javascript">
       var gist = document.getElementById("gistdiv").innerHTML;
       var file = document.getElementById("filediv").innerHTML;
-      
+
       // getURLInfo() completes immediately...
       getAPI(
-        "users/petrosh/gists", 
+        "users/petrosh/gists",
         // ...however, the callback function is invoked AFTER the response arrives
         function() {
           // "this" is the XHR object here!
           var resp = JSON.parse(this.responseText);
+          console.log(resp);
           for (var key in resp) {
             if (resp.hasOwnProperty(key)) {
               var obj = resp[key];
               var singlef = '';
               for (var f in obj['files']) {
                 if (obj['files'].hasOwnProperty(f)){
-                  singlef += tim(file, obj['files'][f]);
+                  //singlef += tim(file, obj['files'][f]);
                 }
               };
-              var rep = tim(gist, obj);
+              //var rep = tim(gist, obj);
               document.getElementById("gists").innerHTML += rep;
             }
           }
