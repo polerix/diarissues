@@ -2,16 +2,15 @@
 <html>
   <head>
     <title>diarissues</title>
-    <description>Get a diary with Issues and Milestones</description>
+    <meta name="description" content="Get a diary with Issues and Milestones">
+    <meta name="author" content="petrosh">
+    <!-- scripts -->
+    <script src="tinytim.min.js"></script>
+    <script src="ghre.js"></script>
   </head>
   <body>
     <div id="issues"></div>
     <div id="milestones"></div>
-
-    <!-- files -->
-
-    <script src="tinytim.min.js"></script>
-    <script src="ghre.js"></script>
 
     <!-- templates -->
 
@@ -34,6 +33,14 @@
       <div>
         <h5><a href='{{url}}'>{{title}}</a></h5>
         <p>{{description}}</p>
+        <small>{{created_at}}</small>
+      </div>
+    </script>
+
+    <script type="text/tim" id="issuediv">
+      <div>
+        <h5><a href='{{html_url}}'>{{title}}</a></h5>
+        {{{body_html}}}
         <small>{{created_at}}</small>
       </div>
     </script>
