@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="issues"></div>
-
+    <iframe src="about:blank" name = "myIframe"></iframe>
     <!-- templates -->
 
     <script type="text/tim" id="tim_labels">
@@ -21,7 +21,7 @@
 
     <script type="text/tim" id="tim_issue">
       <div>
-        <h3><a href='{{html_url}}'>{{title}}</a></h3>
+        <h3><a href='{{html_url}}' target="myIframe">{{title}}</a></h3>
         {{body_html}}
         <small>{{timedate}}</small>
         <p>{{html_labels}} {{html_milestone}}</p>
