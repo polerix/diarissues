@@ -1,68 +1,68 @@
 /*
- * GitHub style for Pygments syntax highlighter, for use with Jekyll
+ * GitHub style for Pygments
  * Courtesy of GitHub.com
  */
 
-.highlight pre, pre, .highlight .hll { background-color: #f8f8f8; border: 1px solid #ccc; padding: 6px 10px; border-radius: 3px; }
-.highlight .pl-c { color: #999988; font-style: italic; }
-.highlight .pl-err { color: #a61717; background-color: #e3d2d2; }
-.highlight .pl-k { font-weight: bold; }
-.highlight .pl-o { font-weight: bold; }
-.highlight .pl-cm { color: #999988; font-style: italic; }
-.highlight .pl-cp { color: #999999; font-weight: bold; }
-.highlight .pl-c1 { color: #999988; font-style: italic; }
-.highlight .pl-cs { color: #999999; font-weight: bold; font-style: italic; }
-.highlight .pl-gd { color: #000000; background-color: #ffdddd; }
-.highlight .pl-gd .x { color: #000000; background-color: #ffaaaa; }
-.highlight .pl-ge { font-style: italic; }
-.highlight .pl-gr { color: #aa0000; }
-.highlight .pl-gh { color: #999999; }
-.highlight .pl-gi { color: #000000; background-color: #ddffdd; }
-.highlight .pl-gi .x { color: #000000; background-color: #aaffaa; }
-.highlight .pl-go { color: #888888; }
-.highlight .pl-gp { color: #555555; }
-.highlight .pl-gs { font-weight: bold; }
-.highlight .pl-gu { color: #800080; font-weight: bold; }
-.highlight .pl-gt { color: #aa0000; }
-.highlight .pl-kc { font-weight: bold; }
-.highlight .pl-kd { font-weight: bold; }
-.highlight .pl-kn { font-weight: bold; }
-.highlight .pl-kp { font-weight: bold; }
-.highlight .pl-kr { font-weight: bold; }
-.highlight .pl-kt { color: #445588; font-weight: bold; }
-.highlight .pl-m { color: #009999; }
-.highlight .pl-s { color: #dd1144; }
-.highlight .pl-n { color: #333333; }
-.highlight .pl-na { color: teal; }
-.highlight .pl-nb { color: #0086b3; }
-.highlight .pl-nc { color: #445588; font-weight: bold; }
-.highlight .pl-no { color: teal; }
-.highlight .pl-ni { color: purple; }
-.highlight .pl-ne { color: #990000; font-weight: bold; }
-.highlight .pl-nf { color: #990000; font-weight: bold; }
-.highlight .pl-nn { color: #555555; }
-.highlight .pl-nt { color: navy; }
-.highlight .pl-nv { color: teal; }
-.highlight .pl-ow { font-weight: bold; }
-.highlight .pl-w { color: #bbbbbb; }
-.highlight .pl-mf { color: #009999; }
-.highlight .pl-mh { color: #009999; }
-.highlight .pl-mi { color: #009999; }
-.highlight .pl-mo { color: #009999; }
-.highlight .pl-sb { color: #dd1144; }
-.highlight .pl-sc { color: #dd1144; }
-.highlight .pl-sd { color: #dd1144; }
-.highlight .pl-s2 { color: #dd1144; }
-.highlight .pl-se { color: #dd1144; }
-.highlight .pl-sh { color: #dd1144; }
-.highlight .pl-si { color: #dd1144; }
-.highlight .pl-sx { color: #dd1144; }
-.highlight .pl-sr { color: #009926; }
-.highlight .pl-s1 { color: #dd1144; }
-.highlight .pl-ss { color: #990073; }
-.highlight .pl-bp { color: #999999; }
-.highlight .pl-vc { color: teal; }
-.highlight .pl-vg { color: teal; }
-.highlight .pl-vi { color: teal; }
-.highlight .pl-il { color: #009999; }
-.highlight .pl-gc { color: #999; background-color: #EAF2F5; }
+.pl-hll { background-color: #f8f8f8; border: 1px solid #ccc; padding: 6px 10px; border-radius: 3px; }
+.pl-c { color: #999988; font-style: italic; }
+.pl-err { color: #a61717; background-color: #e3d2d2; }
+.pl-k { font-weight: bold; }
+.pl-o { font-weight: bold; }
+.pl-cm { color: #999988; font-style: italic; }
+.pl-cp { color: #999999; font-weight: bold; }
+.pl-c1 { color: #999988; font-style: italic; }
+.pl-cs { color: #999999; font-weight: bold; font-style: italic; }
+.pl-gd { color: #000000; background-color: #ffdddd; }
+.pl-gd .x { color: #000000; background-color: #ffaaaa; }
+.pl-ge { font-style: italic; }
+.pl-gr { color: #aa0000; }
+.pl-gh { color: #999999; }
+.pl-gi { color: #000000; background-color: #ddffdd; }
+.pl-gi .x { color: #000000; background-color: #aaffaa; }
+.pl-go { color: #888888; }
+.pl-gp { color: #555555; }
+.pl-gs { font-weight: bold; }
+.pl-gu { color: #800080; font-weight: bold; }
+.pl-gt { color: #aa0000; }
+.pl-kc { font-weight: bold; }
+.pl-kd { font-weight: bold; }
+.pl-kn { font-weight: bold; }
+.pl-kp { font-weight: bold; }
+.pl-kr { font-weight: bold; }
+.pl-kt { color: #445588; font-weight: bold; }
+.pl-m { color: #009999; }
+.pl-s { color: #dd1144; }
+.pl-n { color: #333333; }
+.pl-na { color: teal; }
+.pl-nb { color: #0086b3; }
+.pl-nc { color: #445588; font-weight: bold; }
+.pl-no { color: teal; }
+.pl-ni { color: purple; }
+.pl-ne { color: #990000; font-weight: bold; }
+.pl-nf { color: #990000; font-weight: bold; }
+.pl-nn { color: #555555; }
+.pl-nt { color: navy; }
+.pl-nv { color: teal; }
+.pl-ow { font-weight: bold; }
+.pl-w { color: #bbbbbb; }
+.pl-mf { color: #009999; }
+.pl-mh { color: #009999; }
+.pl-mi { color: #009999; }
+.pl-mo { color: #009999; }
+.pl-sb { color: #dd1144; }
+.pl-sc { color: #dd1144; }
+.pl-sd { color: #dd1144; }
+.pl-s2 { color: #dd1144; }
+.pl-se { color: #dd1144; }
+.pl-sh { color: #dd1144; }
+.pl-si { color: #dd1144; }
+.pl-sx { color: #dd1144; }
+.pl-sr { color: #009926; }
+.pl-s1 { color: #dd1144; }
+.pl-ss { color: #990073; }
+.pl-bp { color: #999999; }
+.pl-vc { color: teal; }
+.pl-vg { color: teal; }
+.pl-vi { color: teal; }
+.pl-il { color: #009999; }
+.pl-gc { color: #999; background-color: #EAF2F5; }
