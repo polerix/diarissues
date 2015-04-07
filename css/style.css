@@ -8,6 +8,17 @@ footer {
   padding: 30px;
   background: #f7f7f7;
 }
+footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+footer ul li {
+  display: inline-block;
+  line-height: 16px;
+  color: #777;
+  font-size: 12px;
+}
 
 /* Article */
 article {
