@@ -1,9 +1,8 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
-var pathHash = window.location.hash.substring(2);
-console.log(pathHash);
+var pathHash = window.location.hash.substring(2); // Drop #!
 var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
-console.log(path);
+console.log(pathHash);
 window.onhashchange = function() {
   window.location.reload();
 }

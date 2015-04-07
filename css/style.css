@@ -13,7 +13,7 @@ footer ul {
   padding: 0;
   list-style: none;
 }
-footer ul li {
+footer.markdown-body ul li {
   display: inline-block;
   line-height: 16px;
   color: #777;
