@@ -9,7 +9,7 @@ getAPI( "repos/" + username + "/" + reponame, renderTitle );
 getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
-  document.querySelector('body > header > h1').innerHTML(resp['name']);
+  document.querySelector('body > header > h1').innerHTML(resp.name);
   document.querySelector('body > header > p').innerHTML(resp['description']);
 }
 function renderIssues(){
