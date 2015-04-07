@@ -21,6 +21,9 @@
     </script>
     <script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
     <script type="text/tim" id="tim_footer">
+      <ul class="right">
+        <li><a href="https://github.com/{{username}}/{{reponame}}">{{username}}/{{reponame}}</a></li>
+      </ul>
       <ul>
         <li id="edit"><a href="https://github.com/{{username}}/{{reponame}}/issues/{{number}}">Edit this Issue</a></li>
         <li><a href="https://github.com/{{username}}/{{reponame}}/issues/new">New Issue</a></li>
@@ -33,7 +36,7 @@
     <script type="text/tim" id="tim_issue">
       <article>
         <header>
-          <h2><a href='/{{reponame}}/#!/{{number}}'>{{title}}</a></h2>
+          <h2><a href='/{{reponame}}/#!{{number}}'>{{title}}</a></h2>
           <blockquote>Posted in {{html_labels}} on {{timedate}}</blockquote>
         </header>
         {{body_html}}

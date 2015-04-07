@@ -1,10 +1,9 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
-var pathHash = window.location.hash.substring(1);
+var pathHash = window.location.hash.substring(2);
 console.log(pathHash);
 var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
 console.log(path);
-var username = pathArray[0], reponame = pathSlash[1];
 window.onhashchange = function() {
   window.location.reload();
 }
@@ -16,10 +15,11 @@ var timheader = document.getElementById("tim_header").innerHTML;
 var timfooter = document.getElementById("tim_footer").innerHTML;
 
 // getURLInfo() completes immediately...
-getAPI( "repos/" + username + "/" + reponame, renderTitle );
-getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
+getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
+getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
 // footer
 document.querySelector('footer').innerHTML = tim(timfooter, path);
+// Render header
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
