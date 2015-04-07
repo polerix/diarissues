@@ -6,7 +6,7 @@ article, body > header {
     padding: 30px;
 }
 
-body > header > h1, body > header > h6 {
+body > header {
   text-align: center;
   text-transform: uppercase;
 }
