@@ -1,14 +1,16 @@
-/* Article */
-article, body > header {
-    min-width: 200px;
-    max-width: 790px;
-    margin: 0 auto;
-    padding: 30px;
-}
-
+/* Header */
 body > header {
   text-align: center;
   text-transform: uppercase;
+  padding: 30px;
+}
+
+/* Article */
+article {
+  min-width: 200px;
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 30px;
 }
 
 article > header {
