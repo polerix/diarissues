@@ -8,12 +8,12 @@ footer {
   padding: 30px;
   background: #f7f7f7;
 }
-footer ul {
+footer.markdown-body ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-footer.markdown-body ul li {
+footer ul li {
   display: inline-block;
   line-height: 16px;
   color: #777;
