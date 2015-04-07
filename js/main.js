@@ -6,6 +6,7 @@ console.log(pathHash);
 window.onhashchange = function() {
   window.location.reload();
 }
+var dateoptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
@@ -41,7 +42,7 @@ function renderIssues(){
         };
         obj['reponame'] = path['reponame'];
         obj['html_labels'] = labels;
-        obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US');
+        obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
         var article = tim(timissue, obj);
         document.getElementsByTagName("section")[0].innerHTML += article;
