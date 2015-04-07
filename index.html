@@ -9,6 +9,10 @@
     <!-- scripts -->
     <script src="tinytim.min.js"></script>
     <script src="ghre.js"></script>
+    <style>span.language{display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;}</style>
   </head>
   <body>
     <div id="issues"></div>
@@ -16,7 +20,7 @@
     <!-- templates -->
 
     <script type="text/tim" id="tim_labels">
-      <span style="background-color:#{{color}};">{{name}}</span>
+      <span class="language" style="background-color:#{{color}};"></span> {{name}}
     </script>
 
     <script type="text/tim" id="tim_mile">in <strong>{{title}}</strong>: {{description}}</script>
