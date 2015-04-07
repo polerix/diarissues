@@ -1,5 +1,5 @@
 /* Header */
-body > header {
+body > header, footer {
   text-align: center;
   text-transform: uppercase;
   padding: 30px;
