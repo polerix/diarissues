@@ -37,7 +37,7 @@ function renderIssues(){
             labels += tim(timlabel, obj['labels'][lab]);
           }
         };
-        obj['reponame'] = path['username'];
+        obj['reponame'] = path['reponame'];
         obj['html_labels'] = labels;
         obj['timedate'] = new Date(Date.parse(obj['created_at']));
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
