@@ -1,5 +1,5 @@
 var pathArray = window.location.host.split( '.' );
-var pathSlash = window.location.host.pathname( '/' );
+var pathSlash = window.location.pathname.split( '/' );
 var username = pathArray[0];
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
