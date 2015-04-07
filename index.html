@@ -13,13 +13,20 @@
   <body>
     <header class="markdown-body"></header>
     <section class="markdown-body"></section>
-    <footer class="markdown-body"><small><a href="#">Edit this Issue</a> <a href="#">New Issue</a></small></footer>
+    <footer class="markdown-body"></footer>
     <!-- templates -->
 
     <script type="text/tim" id="tim_label">
       <span class="language" style="background-color:#{{color}};"></span> {{name}}
     </script>
     <script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
+    <script type="text/tim" id="tim_footer">
+      <ul>
+        <li><a href="https://github.com/{{username}}/{{reponame}}/issues/{{number}}">Edit this Issue</a></li>
+        <li><a href="https://github.com/{{username}}/{{reponame}}/issues/new">New Issue</a></li>
+        <li><a href="https://github.com/{{username}}/{{reponame}}/labels">Edit Labels</a></li>
+      </ul>
+    </script>
 
     <script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
 

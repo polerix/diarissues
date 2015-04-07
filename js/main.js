@@ -1,20 +1,24 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
-var pathHash = window.location.hash;
+var pathHash = window.location.hash.substring(1);
 console.log(pathHash);
+var path = { username: pathArray[0], reponame: pathSlash[1] };
 var username = pathArray[0], reponame = pathSlash[1];
 
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 var timheader = document.getElementById("tim_header").innerHTML;
+var timfooter = document.getElementById("tim_footer").innerHTML;
 
 // getURLInfo() completes immediately...
 getAPI( "repos/" + username + "/" + reponame, renderTitle );
 getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
+// footer
+document.querySelector('footer').innerHTML = tim(timfooter, path);
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
-  document.querySelector('body > header').innerHTML = tim(timheader, resp);
+  document.querySelector('body > header').innerHTML = tim(timheader, );
 }
 function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
@@ -32,7 +36,7 @@ function renderIssues(){
             labels += tim(timlabel, obj['labels'][lab]);
           }
         };
-        obj['reponame'] = reponame;
+        obj['reponame'] = path['username'];
         obj['html_labels'] = labels;
         obj['timedate'] = new Date(Date.parse(obj['created_at']));
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
