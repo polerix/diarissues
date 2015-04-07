@@ -1,7 +1,10 @@
-/* Header */
-body > header, footer {
+/* Header & Footer */
+body > header {
   text-align: center;
   text-transform: uppercase;
+  padding: 30px;
+}
+footer {
   padding: 30px;
 }
 
