@@ -4,6 +4,7 @@
     <title>diarissues</title>
     <meta name="description" content="Issue a Issue site">
     <meta name="author" content="petrosh">
+    <!-- <meta name="fragment" content="!"> -->
     <link href="css/github-markdown.css" media="all" rel="stylesheet" />
     <link href="css/github-syntax.css" media="all" rel="stylesheet" />
     <link href="css/style.css" media="all" rel="stylesheet" />
@@ -23,7 +24,7 @@
     <script type="text/tim" id="tim_issue">
       <article class="markdown-body">
         <header>
-          <h2><a href='{{html_url}}'>{{title}}</a></h2>
+          <h2><a href='/#!/{{number}}'>{{title}}</a></h2>
           <p>Posted in {{html_labels}} on {{timedate}}</p>
         </header>
         {{body_html}}

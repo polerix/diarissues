@@ -1,6 +1,10 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
+var pathHash = window.location.hash;
+console.log(pathHash);
 var username = pathArray[0], reponame = pathSlash[1];
+
+// Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 
