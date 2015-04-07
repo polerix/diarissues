@@ -1,5 +1,5 @@
 /* Article */
-article, section header.markdown-body {
+article, body > header {
     min-width: 200px;
     max-width: 790px;
     margin: 0 auto;
