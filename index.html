@@ -10,7 +10,7 @@
     <script src="tinytim.min.js"></script>
     <script src="ghre.js"></script>
   </head>
-  <body class="markdown-body">
+  <body>
     <div id="issues"></div>
     
     <!-- templates -->
@@ -22,7 +22,7 @@
     <script type="text/tim" id="tim_mile">in <strong>{{title}}</strong>: {{description}}</script>
 
     <script type="text/tim" id="tim_issue">
-      <div>
+      <div class="markdown-body">
         <h3><a href='{{html_url}}'>{{title}}</a></h3>
         {{body_html}}
         <small>{{timedate}}</small>
