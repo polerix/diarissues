@@ -42,6 +42,7 @@ function renderIssues(){
         obj['reponame'] = path['reponame'];
         obj['html_labels'] = labels;
         obj['timedate'] = new Date(Date.parse(obj['created_at']));
+        obj['bidate'] = new Date(obj['created_at']);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
         var article = tim(timissue, obj);
         document.getElementsByTagName("section")[0].innerHTML += article;
