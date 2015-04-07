@@ -6,6 +6,7 @@ body > header {
 }
 footer {
   padding: 30px;
+  background: #f7f7f7;
 }
 
 /* Article */
@@ -26,4 +27,9 @@ span.language {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+/* helpers */
+.right {
+  float: right;
 }
