@@ -2,7 +2,8 @@ var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
 var pathHash = window.location.hash.substring(1);
 console.log(pathHash);
-var path = { username: pathArray[0], reponame: pathSlash[1] };
+var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
+console.log(path);
 var username = pathArray[0], reponame = pathSlash[1];
 
 // Render templates
