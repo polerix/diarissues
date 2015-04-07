@@ -10,19 +10,20 @@
     <link href="css/style.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <header class="markdown-body"><h1></h1><h6></h6></header>
-    <section></section>
+    <header class="markdown-body"></header>
+    <section class="markdown-body"></section>
 
     <!-- templates -->
 
     <script type="text/tim" id="tim_label">
       <span class="language" style="background-color:#{{color}};"></span> {{name}}
     </script>
+    <script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
 
     <script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
 
     <script type="text/tim" id="tim_issue">
-      <article class="markdown-body">
+      <article>
         <header>
           <h2><a href='/#!/{{number}}'>{{title}}</a></h2>
           <p>Posted in {{html_labels}} on {{timedate}}</p>

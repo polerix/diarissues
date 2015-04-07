@@ -7,14 +7,14 @@ var username = pathArray[0], reponame = pathSlash[1];
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
+var timheader = document.getElementById("tim_header").innerHTML;
 
 // getURLInfo() completes immediately...
 getAPI( "repos/" + username + "/" + reponame, renderTitle );
 getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
-  document.querySelector('body > header > h1').innerHTML = resp['name'];
-  document.querySelector('body > header > h6').innerHTML = resp['description'];
+  document.querySelector('body > header').innerHTML = tim(timheader, resp);
 }
 function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
