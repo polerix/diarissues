@@ -101,3 +101,47 @@ color:#55a532;
 color:#795da3;
 font-weight:700;
 }
+.pl-c,.ace_comment {
+color:#969896;
+}
+
+.pl-c1,.pl-s .pl-v,.ace_constant,.ace_support,.ace_support.ace_constant {
+color:#0086b3;
+}
+
+.pl-e,.pl-en,.ace_entity.ace_name {
+color:#795da3;
+}
+
+.pl-s .pl-s1,.pl-smi,.select-menu-tabs a:hover,.select-menu-item.select-menu-action,.select-menu-item.selected,.select-menu-item.select-menu-action>.octicon,.select-menu-item.selected>.octicon,.discussion-item-ref-title .title-link,.newsletter-frequency-choice .choice.selected p,.issue-list-meta a,.repository-lang-stats ol.repository-lang-stats-numbers li .lang,.list-group-item-link {
+color:#333;
+}
+
+.pl-ent,.ace_entity.ace_name.ace_tag {
+color:#63a35c;
+}
+
+.pl-k,.ace_keyword,.ace_support.ace_type,.ace_storage,.ace_storage.ace_type {
+color:#a71d5d;
+}
+
+.pl-pds,.pl-s,.pl-s .pl-pse .pl-s1,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.ace_string,.ace_string.ace_regexp {
+color:#183691;
+}
+
+.pl-v,.ace_variable {
+color:#ed6a43;
+}
+
+.pl-ml,.ace_markup.ace_list {
+color:#693a17;
+}
+
+.pl-mb,.discussion-item .renamed-was,.discussion-item .renamed-is {
+color:#333;
+font-weight:700;
+}
+
+.pl-mo,.ace_markup.ace_heading {
+color:#1d3e81;
+}
