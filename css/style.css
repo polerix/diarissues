@@ -6,6 +6,12 @@ article, body > header {
     padding: 30px;
 }
 
+body > header > h1 { text-align: center; }
+
+article > header {
+  margin: 40px;
+}
+
 /* Language ball */
 span.language {
   display: inline-block;

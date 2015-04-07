@@ -1,15 +1,14 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
-var username = pathArray[0];
+var username = pathArray[0], reponame = pathSlash[1];
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
-console.log( pathArray, pathSlash );
 
 // getURLInfo() completes immediately...
-getAPI(
-  "repos/" + "petrosh" + "/diarissues/issues",
+getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
+
+function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
-  function() {
     // "this" is the XHR object here!
     var resp = JSON.parse(this.responseText);
     for (var key in resp) {
@@ -31,5 +30,4 @@ getAPI(
         document.getElementsByTagName("section")[0].innerHTML += article;
       }
     }
-  }
-);
+}
