@@ -5,6 +5,9 @@ console.log(pathHash);
 var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
 console.log(path);
 var username = pathArray[0], reponame = pathSlash[1];
+window.onhashchange = function() {
+  window.location.reload();
+}
 
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
