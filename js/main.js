@@ -5,8 +5,12 @@ var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 
 // getURLInfo() completes immediately...
+getAPI( "repos/" + username + "/" + reponame, renderTitle );
 getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
-
+function renderTitle(){
+  var resp = JSON.parse(this.responseText);
+  console.log(resp[0]);
+}
 function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
     // "this" is the XHR object here!
