@@ -9,8 +9,9 @@ getAPI( "repos/" + username + "/" + reponame, renderTitle );
 getAPI( "repos/" + username + "/" + reponame + "/issues", renderIssues );
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
-  document.querySelector('body > header > h1').innerHTML(resp.name);
-  document.querySelector('body > header > p').innerHTML(resp['description']);
+  console.log(document.querySelector('body > header > h1'),resp['description']);
+  // document.querySelector('body > header > h1').innerHTML(resp.name);
+  // document.querySelector('body > header > p').innerHTML(resp['description']);
 }
 function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
