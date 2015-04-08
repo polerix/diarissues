@@ -21,7 +21,7 @@ window.onhashchange = function() {
 
 // Homelink
 var homelink = document.querySelector('.homelink');
-homelink.onclick = homePage;
+if(homelink) homelink.onclick = homePage;
 function homePage(){
   window.location.href = window.location.host;
 }
