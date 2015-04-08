@@ -20,8 +20,6 @@ window.onhashchange = function() {
 }
 
 // Homelink
-var homelink = document.querySelector('.homelink');
-if(homelink) homelink.onclick = homePage;
 function homePage(){
   window.location.href = window.location.host;
 }
@@ -114,6 +112,7 @@ if ( pathHash == '' ){
     // Not is Not a Number: Post
     // Render header link
     getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
+    document.querySelector('body > header > h1').onclick = homePage;
     getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
   }else{
     pathHash = pathHash.split("");
