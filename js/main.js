@@ -108,7 +108,7 @@ if ( pathHash == '' ){
   getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
   getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
   // Render pagetitle
-  document.querySelector('html > head > title').innerHTML = reponame;
+  document.querySelector('html > head > title').innerHTML = path['reponame'];
 }else{
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
