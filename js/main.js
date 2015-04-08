@@ -117,7 +117,7 @@ if ( pathHash == '' ){
   }else{
     pathHash = pathHash.split("");
     var term = pathHash.shift();
-    pathHash.join('');
+    pathHash = pathHash.join('');
     console.log( term, pathHash );
   }
 }
