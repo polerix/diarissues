@@ -65,21 +65,23 @@ function renderPost(){
     if (resp.hasOwnProperty(key)) {
       // single issue
       var obj = resp[key];
-      console.log(obj);
-      // loop labels
-      var labels = '';
-      for (var lab in obj['labels']) {
-        if (obj['labels'].hasOwnProperty(lab)){
-          obj['labels'][lab]['reponame'] = path['reponame'];
-          labels += tim(timlabel, obj['labels'][lab]);
-        }
-      };
-      obj['reponame'] = path['reponame'];
-      obj['html_labels'] = labels;
-      obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
-      // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
-      var article = tim(timissue, obj);
-      document.getElementsByTagName("section")[0].innerHTML += article;
+      if ( obj['number'] == pathHash ){
+        console.log(obj);
+        // loop labels
+        var labels = '';
+        for (var lab in obj['labels']) {
+          if (obj['labels'].hasOwnProperty(lab)){
+            obj['labels'][lab]['reponame'] = path['reponame'];
+            labels += tim(timlabel, obj['labels'][lab]);
+          }
+        };
+        obj['reponame'] = path['reponame'];
+        obj['html_labels'] = labels;
+        obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
+        // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
+        var article = tim(timissue, obj);
+        document.getElementsByTagName("section")[0].innerHTML += article;
+      }
     }
   }
 }
@@ -97,7 +99,8 @@ if ( pathHash == '' ){
     // Not is Not a Number: Post
     getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
   }else{
-    var term = pathHash.split("").shift().join('');
+    var term = pathHash.split("");
+    pathHash.shift().join('');
     console.log( term, pathHash );
   }
 }
