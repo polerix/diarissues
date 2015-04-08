@@ -10,6 +10,8 @@ var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 var timheader = document.getElementById("tim_header").innerHTML;
 var timfooter = document.getElementById("tim_footer").innerHTML;
+var timarticlelink = document.getElementById("tim_article_link").innerHTML;
+var timarticlenolink = document.getElementById("tim_article_nolink").innerHTML;
 
 // Hash change
 window.onhashchange = function() {
@@ -50,6 +52,7 @@ function renderIssues(){
       obj['html_labels'] = labels;
       obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
+      obj['html_headerarticle'] = tim(timarticlelink, obj);
       var article = tim(timissue, obj);
       document.getElementsByTagName("section")[0].innerHTML += article;
     }
@@ -79,6 +82,7 @@ function renderPost(){
         obj['html_labels'] = labels;
         obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
+        obj['html_headerarticle'] = tim(timarticlenolink, obj);
         var article = tim(timissue, obj);
         document.getElementsByTagName("section")[0].innerHTML += article;
       }
@@ -99,8 +103,9 @@ if ( pathHash == '' ){
     // Not is Not a Number: Post
     getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
   }else{
-    var term = pathHash.split("");
-    pathHash.shift().join('');
+    pathHash.split("");
+    var term = pathHash.shift();
+    pathHash.join('');
     console.log( term, pathHash );
   }
 }
