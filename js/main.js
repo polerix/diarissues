@@ -107,18 +107,27 @@ if ( pathHash == '' ){
   // Render header nolink
   getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
   getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
+  // Render pagetitle
+  document.querySelector('html > head > title').innerHTML = reponame;
 }else{
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
     // Render header link
     getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-    document.querySelector('body > header > h1').onclick = homePage;
     getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
+    // Render pagetitle
+    document.querySelector('html > head > title').innerHTML = 'post';
   }else{
     pathHash = pathHash.split("");
     var term = pathHash.shift();
-    pathHash = pathHash.join('');
-    console.log( term, pathHash );
+    if( term =='/'){
+      pathHash = pathHash.join('');
+      console.log( term, pathHash );
+      // Render pagetitle
+      document.querySelector('html > head > title').innerHTML = 'search';
+    }else{
+      console.log('404');
+    }
   }
 }
 
