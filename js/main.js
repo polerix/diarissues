@@ -54,11 +54,24 @@ function renderIssues(){
         document.getElementsByTagName("section")[0].innerHTML += article;
       }
     }
+    // Render footer
+    document.querySelector('footer').innerHTML = tim(timfooter, path);
 }
 
-// footer
-document.querySelector('footer').innerHTML = tim(timfooter, path);
-
-// getURLInfo() completes immediately...
+// Render header
 getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
-getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
+
+// Check page
+if ( pathHash == '' ){
+  // Homepage
+  // getURLInfo() completes immediately...
+  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
+}else{
+  if ( !isNaN( pathHash ) ){
+    // Not is Not a Number: Post
+    getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
+  }else{
+    var term = pathHash.split("").shift().join('');
+    console.log( term, pathHash );
+  }
+}
