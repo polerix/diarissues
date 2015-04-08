@@ -1,29 +1,34 @@
+// Vars
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' );
 var pathHash = window.location.hash.substring(2); // Drop #!
-var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
 console.log(pathHash);
-window.onhashchange = function() {
-  window.location.reload();
-}
+var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
 var dateoptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 var timheader = document.getElementById("tim_header").innerHTML;
 var timfooter = document.getElementById("tim_footer").innerHTML;
 
-// getURLInfo() completes immediately...
-getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
-getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
-// footer
-document.querySelector('footer').innerHTML = tim(timfooter, path);
+// Hash change
+window.onhashchange = function() {
+  window.location.reload();
+}
+
+// Preload
+function load() {
+  console.log("load event detected!");
+}
+window.onload = load;
+
 // Render header
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
 }
+
+// Render complete issues
 function renderIssues(){
   // ...however, the callback function is invoked AFTER the response arrives
     // "this" is the XHR object here!
@@ -37,6 +42,7 @@ function renderIssues(){
         var labels = '';
         for (var lab in obj['labels']) {
           if (obj['labels'].hasOwnProperty(lab)){
+            obj['labels'][lab]['reponame'] = path['reponame'];
             labels += tim(timlabel, obj['labels'][lab]);
           }
         };
@@ -49,3 +55,10 @@ function renderIssues(){
       }
     }
 }
+
+// footer
+document.querySelector('footer').innerHTML = tim(timfooter, path);
+
+// getURLInfo() completes immediately...
+getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
+getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
