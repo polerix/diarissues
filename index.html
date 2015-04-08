@@ -20,7 +20,7 @@
       <span class="language" style="background-color:#{{color}};"></span> <a href='/{{reponame}}/#!/{{name}}'>{{name}}</a>
     </script>
     <script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
-    <script type="text/tim" id="tim_header_link"><h1><a href="/{{reponame}}/">{{name}}</a></h1><h6>{{description}}</h6></script>
+    <script type="text/tim" id="tim_header_link"><h1><a href="/{{name}}/">{{name}}</a></h1><h6>{{description}}</h6></script>
     <script type="text/tim" id="tim_footer">
       <ul class="right">
         <li><a href="https://github.com/{{username}}/{{reponame}}">{{username}}/{{reponame}}</a></li>
@@ -34,7 +34,7 @@
 
     <script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
     <script type="text/tim" id="tim_article_link">
-      <h2><a href='/{{title}}/#!{{number}}'>{{title}}</a></h2>
+      <h2><a href='/{{reponame}}/#!{{number}}'>{{title}}</a></h2>
       <blockquote>Posted in {{html_labels}} on {{timedate}}</blockquote>
     </script>
     <script type="text/tim" id="tim_article_nolink">
