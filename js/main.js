@@ -9,6 +9,7 @@ var dateoptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numer
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
 var timheader = document.getElementById("tim_header").innerHTML;
+var timheaderlink = document.getElementById("tim_header_link").innerHTML;
 var timfooter = document.getElementById("tim_footer").innerHTML;
 var timarticlelink = document.getElementById("tim_article_link").innerHTML;
 var timarticlenolink = document.getElementById("tim_article_nolink").innerHTML;
@@ -16,6 +17,13 @@ var timarticlenolink = document.getElementById("tim_article_nolink").innerHTML;
 // Hash change
 window.onhashchange = function() {
   window.location.reload();
+}
+
+// Homelink
+var homelink = document.querySelector('.homelink');
+homelink.onclick = homePage;
+function homePage(){
+  window.location.href = window.location.host;
 }
 
 // Preload
@@ -28,6 +36,10 @@ window.onload = load;
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
+}
+function renderTitleLink(){
+  var resp = JSON.parse(this.responseText);
+  document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
 }
 
 // Render complete issues
@@ -90,20 +102,21 @@ function renderPost(){
   }
 }
 
-// Render header
-getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
-
 // Check page
 if ( pathHash == '' ){
   // Homepage
   // getURLInfo() completes immediately...
+  // Render header nolink
+  getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
   getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderIssues );
 }else{
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
+    // Render header link
+    getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
     getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues", renderPost );
   }else{
-    pathHash.split("");
+    pathHash = pathHash.split("");
     var term = pathHash.shift();
     pathHash.join('');
     console.log( term, pathHash );

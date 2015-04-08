@@ -45,3 +45,6 @@ span.language {
 .right {
   float: right;
 }
+.homelink {
+  cursor: pointer;
+}
