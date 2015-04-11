@@ -126,7 +126,7 @@ if ( pathHash == '' ){
       console.log( term, pathHash );
       if ( term == '/' ) {
         getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-        getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?labels=" + pathHash, renderPost );
+        getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?labels=" + pathHash, renderIssues );
       }
       // Render pagetitle
       document.querySelector('html > head > title').innerHTML = 'search';
