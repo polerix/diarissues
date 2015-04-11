@@ -4,7 +4,7 @@ var pathSlash = window.location.pathname.split( '/' );
 var pathHash = window.location.hash.substring(2); // Drop #!
 console.log(pathHash);
 var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
-var dateoptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
 // Render templates
 var timlabel = document.getElementById("tim_label").innerHTML;
 var timissue = document.getElementById("tim_issue").innerHTML;
@@ -60,7 +60,7 @@ function renderIssues(){
       };
       obj['reponame'] = path['reponame'];
       obj['html_labels'] = labels;
-      obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
+      obj['timedate'] = new Date(obj['created_at']).toLocaleDateString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
       obj['html_headerarticle'] = tim(timarticlelink, obj);
       var article = tim(timissue, obj);
