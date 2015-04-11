@@ -114,7 +114,7 @@ if ( pathHash == '' ){
     // Not is Not a Number: Post
     // Render header link
     getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-    getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues+author:" + path['username'], renderPost );
+    getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?author=" + path['username'], renderPost );
     // Render pagetitle
     document.querySelector('html > head > title').innerHTML = 'post';
   }else{
@@ -125,7 +125,7 @@ if ( pathHash == '' ){
       console.log( term, pathHash );
       if ( term == '/' ) {
         getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-        getAPI( "search/issues?repo:" + path['username'] + "/" + path['reponame'] + "+label:" + pathHash, renderPost );
+        getAPI( "search/issues?repo=" + path['username'] + "/" + path['reponame'] + "&label=" + pathHash, renderPost );
       }
       // Render pagetitle
       document.querySelector('html > head > title').innerHTML = 'search';
