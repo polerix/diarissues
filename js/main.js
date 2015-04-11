@@ -106,7 +106,7 @@ if ( pathHash == '' ){
   // getURLInfo() completes immediately...
   // Render header nolink
   getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
-  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues+author:" + path['username'], renderIssues );
+  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?author=" + path['username'], renderIssues );
   // Render pagetitle
   document.querySelector('html > head > title').innerHTML = path['reponame'];
 }else{
@@ -121,11 +121,12 @@ if ( pathHash == '' ){
     pathHash = pathHash.split("");
     var term = pathHash.shift();
     if( term =='/'){
+      // Search label
       pathHash = pathHash.join('');
       console.log( term, pathHash );
       if ( term == '/' ) {
         getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-        getAPI( "search/issues?repo=" + path['username'] + "/" + path['reponame'] + "&label=" + pathHash, renderPost );
+        getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?label=" + pathHash, renderPost );
       }
       // Render pagetitle
       document.querySelector('html > head > title').innerHTML = 'search';
