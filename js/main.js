@@ -24,12 +24,6 @@ function homePage(){
   window.location.href = window.location.host;
 }
 
-// Preload
-function load() {
-  console.log("load event detected!");
-}
-window.onload = load;
-
 // Render header
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
