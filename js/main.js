@@ -28,13 +28,13 @@ function homePage(){
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
-  path.updated_at = resp.updated_at;
+  path.updated_at = new Date(resp.updated_at).toLocaleDateString('en-US', dateoptions);
   renderFooter();
 }
 function renderTitleLink(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
-  path.updated_at = resp.updated_at;
+  path.updated_at = new Date(resp.updated_at).toLocaleDateString('en-US', dateoptions);
   renderFooter();
 }
 
