@@ -105,7 +105,7 @@ if ( !pathHash ){
   // getURLInfo() completes immediately...
   // Render header nolink
   getAPI( "repos/" + path.username + "/" + path.reponame, renderTitle );
-  getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?author=" + path.username, renderIssues );
+  getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?creator=" + path.username, renderIssues );
   // Render pagetitle
   document.querySelector('html > head > title').innerHTML = path.reponame;
 }else{
