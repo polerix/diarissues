@@ -1,23 +1,23 @@
 // Vars
-var pathArray = window.location.host.split( '.' );
-var pathSlash = window.location.pathname.split( '/' );
-var pathHash = window.location.hash.substring(2); // Drop #!
-console.log(pathHash);
-var path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 };
-var dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
-// Render templates
-var timlabel = document.getElementById("tim_label").innerHTML;
-var timissue = document.getElementById("tim_issue").innerHTML;
-var timheader = document.getElementById("tim_header").innerHTML;
-var timheaderlink = document.getElementById("tim_header_link").innerHTML;
-var timfooter = document.getElementById("tim_footer").innerHTML;
-var timarticlelink = document.getElementById("tim_article_link").innerHTML;
-var timarticlenolink = document.getElementById("tim_article_nolink").innerHTML;
+var pathArray = window.location.host.split( '.' ),
+    pathSlash = window.location.pathname.split( '/' ),
+    pathHash = window.location.hash.substring(2),
+    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 },
+    dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+// Templates
+var timlabel = document.getElementById("tim_label").innerHTML,
+    timissue = document.getElementById("tim_issue").innerHTML,
+    timheader = document.getElementById("tim_header").innerHTML,
+    timheaderlink = document.getElementById("tim_header_link").innerHTML,
+    timfooter = document.getElementById("tim_footer").innerHTML,
+    timarticlelink = document.getElementById("tim_article_link").innerHTML,
+    timarticlenolink = document.getElementById("tim_article_nolink").innerHTML;
 
 // Hash change
 window.onhashchange = function() {
   window.location.reload();
-}
+};
 
 // Homelink
 function homePage(){
@@ -46,17 +46,17 @@ function renderIssues(){
       console.log(obj);
       // loop labels
       var labels = '';
-      for (var lab in obj['labels']) {
-        if (obj['labels'].hasOwnProperty(lab)){
-          obj['labels'][lab]['reponame'] = path['reponame'];
-          labels += tim(timlabel, obj['labels'][lab]);
+      for (var lab in obj.labels) {
+        if (obj.labels.hasOwnProperty(lab)){
+          obj.labels[lab].reponame = path.reponame;
+          labels += tim(timlabel, obj.labels[lab]);
         }
-      };
-      obj['reponame'] = path['reponame'];
-      obj['html_labels'] = labels;
-      obj['timedate'] = new Date(obj['created_at']).toLocaleDateString('en-US', dateoptions);
+      }
+      obj.reponame = path.reponame;
+      obj.html_labels = labels;
+      obj.timedate = new Date(obj.created_at).toLocaleDateString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
-      obj['html_headerarticle'] = tim(timarticlelink, obj);
+      obj.html_headerarticle = tim(timarticlelink, obj);
       var article = tim(timissue, obj);
       document.getElementsByTagName("section")[0].innerHTML += article;
     }
@@ -72,21 +72,21 @@ function renderPost(){
     if (resp.hasOwnProperty(key)) {
       // single issue
       var obj = resp[key];
-      if ( obj['number'] == pathHash ){
+      if ( obj.number == pathHash ){
         console.log(obj);
         // loop labels
         var labels = '';
-        for (var lab in obj['labels']) {
-          if (obj['labels'].hasOwnProperty(lab)){
-            obj['labels'][lab]['reponame'] = path['reponame'];
-            labels += tim(timlabel, obj['labels'][lab]);
+        for (var lab in obj.labels) {
+          if (obj.labels.hasOwnProperty(lab)){
+            obj.labels[lab].reponame = path.reponame;
+            labels += tim(timlabel, obj.labels[lab]);
           }
-        };
-        obj['reponame'] = path['reponame'];
-        obj['html_labels'] = labels;
-        obj['timedate'] = new Date(obj['created_at']).toLocaleTimeString('en-US', dateoptions);
+        }
+        obj.reponame = path.reponame;
+        obj.html_labels = labels;
+        obj.timedate = new Date(obj.created_at).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
-        obj['html_headerarticle'] = tim(timarticlenolink, obj);
+        obj.html_headerarticle = tim(timarticlenolink, obj);
         var article = tim(timissue, obj);
         document.getElementsByTagName("section")[0].innerHTML += article;
       }
@@ -95,20 +95,20 @@ function renderPost(){
 }
 
 // Check page
-if ( pathHash == '' ){
+if ( !pathHash ){
   // Homepage
   // getURLInfo() completes immediately...
   // Render header nolink
-  getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitle );
-  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?author=" + path['username'], renderIssues );
+  getAPI( "repos/" + path.username + "/" + path.reponame, renderTitle );
+  getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?author=" + path.username, renderIssues );
   // Render pagetitle
-  document.querySelector('html > head > title').innerHTML = path['reponame'];
+  document.querySelector('html > head > title').innerHTML = path.reponame;
 }else{
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
     // Render header link
-    getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-    getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?author=" + path['username'], renderPost );
+    getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
+    getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?creator=" + path.username, renderPost );
     // Render pagetitle
     document.querySelector('html > head > title').innerHTML = 'post';
   }else{
@@ -119,8 +119,8 @@ if ( pathHash == '' ){
       pathHash = pathHash.join('');
       console.log( term, pathHash );
       if ( term == '/' ) {
-        getAPI( "repos/" + path['username'] + "/" + path['reponame'], renderTitleLink );
-        getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/issues?labels=" + pathHash, renderIssues );
+        getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
+        getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?labels=" + pathHash, renderIssues );
       }
       // Render pagetitle
       document.querySelector('html > head > title').innerHTML = 'search';
