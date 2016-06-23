@@ -5,7 +5,7 @@ function getAPI(url, callback) {
     "https://api.github.com/" + url,
     true
   );
-  xhr.setRequestHeader('Accept', 'application/vnd.github.v3.full+json');
+  if (url.indexOf('issues') < 0) xhr.setRequestHeader('Accept', 'application/vnd.github.v3.full+json'); else xhr.setRequestHeader('Accept', 'application/vnd.github.squirrel-girl-preview');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       // defensive check
