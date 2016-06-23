@@ -1,16 +1,17 @@
 diarissues
 ==========
 
-Get a diary with Issues and Milestones
+Get a diary with Issues.
 
-pages
-=====
+### To do
 
-- [ ] Home ( hash = '' )
-  - header list
+- Post list.
+- Article header: author avatar and date (right), labels or "no label" (left).
+- Reply (comment) link.
+- Check `reactions`
 
-- [ ] Post ( hash = # )
-  - post
+## Pages
 
-- [ ] Search ( hash = "search=string", "label=string" )
-  - header list
+- Home `hash: null`
+- Post `hash: #`
+- Search `hash: search = "string", label = "string"`
