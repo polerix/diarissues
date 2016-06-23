@@ -2,7 +2,7 @@
 var pathArray = window.location.host.split( '.' ),
     pathSlash = window.location.pathname.split( '/' ),
     pathHash = window.location.hash.substring(2),
-    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': false, 'updated_at': '' },
+    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'edit_link': '', 'updated_at': '' },
     dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 // Templates
@@ -54,6 +54,7 @@ function renderIssues(){
       // loop labels
       var labels = '';
       if (obj.labels.length) {
+        labels += ' labeled ';
         for (var lab in obj.labels) {
           if (obj.labels.hasOwnProperty(lab)){
             labels += tim(timlabel, obj.labels[lab]);
@@ -82,6 +83,7 @@ function renderPost(){
         // loop labels
         var labels = '';
         if (obj.labels.length) {
+          labels += ' labeled ';
           for (var lab in obj.labels) {
             if (obj.labels.hasOwnProperty(lab)){
               labels += tim(timlabel, obj.labels[lab]);
@@ -112,7 +114,7 @@ if ( !pathHash ){
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
     // Render header link
-    path.number = pathHash;
+    path.edit_link = '<li id="edit"><a href="https://github.com/' + path.username + '/' + path.reponame + '/issues/' + pathHash + '">Edit this Issue</a></li>';
     getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
     getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?creator=" + path.username, renderPost );
     // Render pagetitle
