@@ -28,13 +28,13 @@ function homePage(){
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
-  path.updated_at = new Date(resp.updated_at).toLocaleDateString('en-US', dateoptions);
+  path.updated_at = new Date(resp.updated_at).toLocaleTimeString('en-US', dateoptions);
   renderFooter();
 }
 function renderTitleLink(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
-  path.updated_at = new Date(resp.updated_at).toLocaleDateString('en-US', dateoptions);
+  path.updated_at = new Date(resp.updated_at).toLocaleTimeString('en-US', dateoptions);
   renderFooter();
 }
 
@@ -43,7 +43,7 @@ function renderFooter(){
   document.querySelector('footer').innerHTML = tim(timfooter, path);
 }
 
-// Render complete issues
+// Render issues list
 function renderIssues(){
   var resp = JSON.parse(this.responseText);
   for (var key in resp) {
@@ -70,7 +70,7 @@ function renderIssues(){
   }
 }
 
-// Render complete issues
+// Render single issue
 function renderPost(){
   var resp = JSON.parse(this.responseText);
   for (var key in resp) {
