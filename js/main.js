@@ -2,7 +2,7 @@
 var pathArray = window.location.host.split( '.' ),
     pathSlash = window.location.pathname.split( '/' ),
     pathHash = window.location.hash.substring(2),
-    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'post': false, 'number': 0, 'updated_at': '' },
+    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': false, 'updated_at': '' },
     dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 // Templates
@@ -113,7 +113,6 @@ if ( !pathHash ){
     // Not is Not a Number: Post
     // Render header link
     path.number = pathHash;
-    path.post = true;
     getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
     getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?creator=" + path.username, renderPost );
     // Render pagetitle

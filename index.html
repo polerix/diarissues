@@ -26,7 +26,7 @@
         <li><a href="https://github.com/{{username}}/{{reponame}}">{{username}}/{{reponame}}</a> updated <strong>{{updated_at}}</strong></li>
       </ul>
       <ul>
-        {{post}}<li id="edit"><a href="https://github.com/{{username}}/{{reponame}}/issues/{{number}}">Edit this Issue</a></li>{{/post}}
+        {{number}}<li id="edit"><a href="https://github.com/{{username}}/{{reponame}}/issues/{{number}}">Edit this Issue</a></li>{{/number}}
         <li><a href="https://github.com/{{username}}/{{reponame}}/issues/new">New Issue</a></li>
         <li><a href="https://github.com/{{username}}/{{reponame}}/labels">Edit Labels</a></li>
       </ul>
@@ -35,11 +35,11 @@
     <script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
     <script type="text/tim" id="tim_article_link">
       <h2><a href='./#!{{number}}'>{{title}}</a></h2>
-      <blockquote>Posted in {{html_labels}} on {{timedate}}</blockquote>
+      <blockquote>{{timedate}}{{html_labels}} labeled {{html_labels}}{{/html_labels}} </blockquote>
     </script>
     <script type="text/tim" id="tim_article_nolink">
       <h2><span class="octicon octicon-chevron-left"></span> {{title}}</h2>
-      <blockquote>Posted in {{html_labels}} on {{timedate}}</blockquote>
+      <blockquote>{{timedate}}{{html_labels}} labeled {{html_labels}}{{/html_labels}} </blockquote>
     </script>
     <script type="text/tim" id="tim_issue">
       <article>
