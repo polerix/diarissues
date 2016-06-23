@@ -2,7 +2,7 @@
 var pathArray = window.location.host.split( '.' ),
     pathSlash = window.location.pathname.split( '/' ),
     pathHash = window.location.hash.substring(2),
-    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 1 },
+    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 0, 'updated': '' },
     dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 // Templates
@@ -28,10 +28,12 @@ function homePage(){
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
+  path.updated = resp.updated_at;
 }
 function renderTitleLink(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
+  path.updated = resp.updated_at;
 }
 
 // Render complete issues
@@ -53,7 +55,7 @@ function renderIssues(){
         }
       }
       obj.reponame = path.reponame;
-      // obj.html_labels = labels;
+      obj.html_labels = labels;
       obj.timedate = new Date(obj.created_at).toLocaleDateString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
       obj.html_headerarticle = tim(timarticlelink, obj);
@@ -83,7 +85,7 @@ function renderPost(){
           }
         }
         obj.reponame = path.reponame;
-        // obj.html_labels = labels;
+        obj.html_labels = labels;
         obj.timedate = new Date(obj.created_at).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
         obj.html_headerarticle = tim(timarticlenolink, obj);
@@ -107,6 +109,7 @@ if ( !pathHash ){
   if ( !isNaN( pathHash ) ){
     // Not is Not a Number: Post
     // Render header link
+    path.number = pathHash;
     getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
     getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?creator=" + path.username, renderPost );
     // Render pagetitle
@@ -114,14 +117,12 @@ if ( !pathHash ){
   }else{
     pathHash = pathHash.split('');
     var term = pathHash.shift();
-    if( term =='/'){
+    if( term == '/'){
       // Search label
       pathHash = pathHash.join('');
       console.log( term, pathHash );
-      if ( term == '/' ) {
-        getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
-        getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?labels=" + pathHash, renderIssues );
-      }
+      getAPI( "repos/" + path.username + "/" + path.reponame, renderTitleLink );
+      getAPI( "repos/" + path.username + "/" + path.reponame + "/issues?labels=" + pathHash, renderIssues );
       // Render pagetitle
       document.querySelector('html > head > title').innerHTML = 'search';
     }else{
