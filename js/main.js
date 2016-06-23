@@ -53,7 +53,7 @@ function renderIssues(){
         }
       }
       obj.reponame = path.reponame;
-      obj.html_labels = labels;
+      // obj.html_labels = labels;
       obj.timedate = new Date(obj.created_at).toLocaleDateString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
       obj.html_headerarticle = tim(timarticlelink, obj);
@@ -83,7 +83,7 @@ function renderPost(){
           }
         }
         obj.reponame = path.reponame;
-        obj.html_labels = labels;
+        // obj.html_labels = labels;
         obj.timedate = new Date(obj.created_at).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
         obj.html_headerarticle = tim(timarticlenolink, obj);
