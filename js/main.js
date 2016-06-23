@@ -29,11 +29,18 @@ function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
   path.updated_at = resp.updated_at;
+  renderFooter();
 }
 function renderTitleLink(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
   path.updated_at = resp.updated_at;
+  renderFooter();
+}
+
+// Render footer
+function renderFooter(){
+  document.querySelector('footer').innerHTML = tim(timfooter, path);
 }
 
 // Render complete issues
@@ -130,6 +137,3 @@ if ( !pathHash ){
     }
   }
 }
-
-// Render footer
-document.querySelector('footer').innerHTML = tim(timfooter, path);
