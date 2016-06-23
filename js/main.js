@@ -2,7 +2,7 @@
 var pathArray = window.location.host.split( '.' ),
     pathSlash = window.location.pathname.split( '/' ),
     pathHash = window.location.hash.substring(2),
-    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 0, 'updated': '' },
+    path = { 'username': pathArray[0], 'reponame': pathSlash[1], 'number': 0, 'updated_at': '' },
     dateoptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 // Templates
@@ -28,12 +28,12 @@ function homePage(){
 function renderTitle(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheader, resp);
-  path.updated = resp.updated_at;
+  path.updated_at = resp.updated_at;
 }
 function renderTitleLink(){
   var resp = JSON.parse(this.responseText);
   document.querySelector('body > header').innerHTML = tim(timheaderlink, resp);
-  path.updated = resp.updated_at;
+  path.updated_at = resp.updated_at;
 }
 
 // Render complete issues
