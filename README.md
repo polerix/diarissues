@@ -1,7 +1,7 @@
 diarissues
 ==========
 
-Get a diary with Issues.
+Get a diary on Issues.
 
 ### To do
 
