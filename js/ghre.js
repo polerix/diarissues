@@ -14,7 +14,7 @@ function getAPI(url, callback) {
         callback.apply(xhr);
       }
     }
-  }
-  // send the request *after* the event handler is defined 
+  };
+  // send the request *after* the event handler is defined
   xhr.send();
 }
