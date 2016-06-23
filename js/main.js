@@ -56,12 +56,10 @@ function renderIssues(){
       if (obj.labels.length) {
         for (var lab in obj.labels) {
           if (obj.labels.hasOwnProperty(lab)){
-            // obj.labels[lab].reponame = path.reponame;
             labels += tim(timlabel, obj.labels[lab]);
           }
         }
       }
-      obj.reponame = path.reponame;
       obj.html_labels = labels;
       obj.timedate = new Date(obj.created_at).toLocaleDateString('en-US', dateoptions);
       // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
@@ -86,12 +84,10 @@ function renderPost(){
         if (obj.labels.length) {
           for (var lab in obj.labels) {
             if (obj.labels.hasOwnProperty(lab)){
-              // obj.labels[lab].reponame = path.reponame;
               labels += tim(timlabel, obj.labels[lab]);
             }
           }
         }
-        obj.reponame = path.reponame;
         obj.html_labels = labels;
         obj.timedate = new Date(obj.created_at).toLocaleTimeString('en-US', dateoptions);
         // obj['html_milestone'] = tim(timmilestone, obj['milestone']);
