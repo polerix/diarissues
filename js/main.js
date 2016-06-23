@@ -36,8 +36,6 @@ function renderTitleLink(){
 
 // Render complete issues
 function renderIssues(){
-  // ...however, the callback function is invoked AFTER the response arrives
-  // "this" is the XHR object here!
   var resp = JSON.parse(this.responseText);
   for (var key in resp) {
     if (resp.hasOwnProperty(key)) {
@@ -46,10 +44,12 @@ function renderIssues(){
       console.log(obj);
       // loop labels
       var labels = '';
-      for (var lab in obj.labels) {
-        if (obj.labels.hasOwnProperty(lab)){
-          obj.labels[lab].reponame = path.reponame;
-          labels += tim(timlabel, obj.labels[lab]);
+      if (obj.labels.length) {
+        for (var lab in obj.labels) {
+          if (obj.labels.hasOwnProperty(lab)){
+            // obj.labels[lab].reponame = path.reponame;
+            labels += tim(timlabel, obj.labels[lab]);
+          }
         }
       }
       obj.reponame = path.reponame;
@@ -65,8 +65,6 @@ function renderIssues(){
 
 // Render complete issues
 function renderPost(){
-  // ...however, the callback function is invoked AFTER the response arrives
-  // "this" is the XHR object here!
   var resp = JSON.parse(this.responseText);
   for (var key in resp) {
     if (resp.hasOwnProperty(key)) {
@@ -76,10 +74,12 @@ function renderPost(){
         console.log(obj);
         // loop labels
         var labels = '';
-        for (var lab in obj.labels) {
-          if (obj.labels.hasOwnProperty(lab)){
-            obj.labels[lab].reponame = path.reponame;
-            labels += tim(timlabel, obj.labels[lab]);
+        if (obj.labels.length) {
+          for (var lab in obj.labels) {
+            if (obj.labels.hasOwnProperty(lab)){
+              // obj.labels[lab].reponame = path.reponame;
+              labels += tim(timlabel, obj.labels[lab]);
+            }
           }
         }
         obj.reponame = path.reponame;
@@ -112,7 +112,7 @@ if ( !pathHash ){
     // Render pagetitle
     document.querySelector('html > head > title').innerHTML = 'post';
   }else{
-    pathHash = pathHash.split("");
+    pathHash = pathHash.split('');
     var term = pathHash.shift();
     if( term =='/'){
       // Search label
