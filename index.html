@@ -1,57 +1,71 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>diarissues</title>
-    <meta name="description" content="Issue a Issue site">
-    <meta name="author" content="petrosh">
-    <!-- <meta name="fragment" content="!"> -->
-    <link href="css/normalize.css" media="all" rel="stylesheet" />
-    <link href="css/github-markdown.css" media="all" rel="stylesheet" />
-    <link href="css/github-syntax.css" media="all" rel="stylesheet" />
-    <link href="css/style.css" media="all" rel="stylesheet" />
+	<title>diarissues</title>
+	<meta name="description" content="Issue a Issue site">
+	<meta name="author" content="petrosh">
+	<!-- <meta name="fragment" content="!"> -->
+	<link href="css/normalize.css" media="all" rel="stylesheet" />
+	<link href="css/github-markdown.css" media="all" rel="stylesheet" />
+	<link href="css/github-syntax.css" media="all" rel="stylesheet" />
+	<link href="css/style.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <header class="markdown-body"></header>
-    <section class="markdown-body"></section>
-    <footer class="markdown-body"></footer>
-    <!-- templates -->
+	<header class="markdown-body"></header>
+	<section class="markdown-body"></section>
+	<footer class="markdown-body"></footer>
+	<!-- templates -->
 
-    <script type="text/tim" id="tim_label">
-      <span class="language" style="background-color:#{{color}};"></span> <a href='./#!/{{name}}'>{{name}}</a>
-    </script>
-    <script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
-    <script type="text/tim" id="tim_header_link"><h1><a href="/{{name}}/">{{name}}</a></h1><h6>{{description}}</h6></script>
-    <script type="text/tim" id="tim_footer">
-      <ul class="right">
-        <li><a href="https://github.com/{{username}}/{{reponame}}">{{username}}/{{reponame}}</a> updated <strong>{{updated_at}}</strong></li>
-      </ul>
-      <ul>
-        {{edit_link}}
-        <li><a href="https://github.com/{{username}}/{{reponame}}/issues/new">New Issue</a></li>
-        <li><a href="https://github.com/{{username}}/{{reponame}}/labels">Edit Labels</a></li>
-      </ul>
-    </script>
+	<script type="text/tim" id="tim_label">
+	  <span class="language" style="background-color:#{{color}};"></span> <a href='./#!/{{name}}'>{{name}}</a>
+	</script>
 
-    <script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
-    <script type="text/tim" id="tim_article_link">
-      <h2><a href='./#!{{number}}'>{{title}}</a></h2>
-      <blockquote>{{timedate}}{{html_labels}}</blockquote>
-    </script>
-    <script type="text/tim" id="tim_article_nolink">
-      <h2><span class="octicon octicon-chevron-left"></span> {{title}}</h2>
-      <blockquote>{{timedate}}{{html_labels}}</blockquote>
-    </script>
-    <script type="text/tim" id="tim_issue">
-      <article>
-        <header>{{html_headerarticle}}</header>
-        {{body_html}}
-      </article>
-    </script>
-    <script type="text/tim" id=tim_pagetitle>{{pagetitle}}</script>
+	<script type="text/tim" id="tim_header"><h1>{{name}}</h1><h6>{{description}}</h6></script>
 
-    <!-- scripts -->
-    <script src="js/tinytim.min.js"></script>
-    <script src="js/ghre.js"></script>
-    <script src="js/main.js"></script>
+	<script type="text/tim" id="tim_header_link"><h1><a href="/{{name}}/">{{name}}</a></h1><h6>{{description}}</h6></script>
+
+	<script type="text/tim" id="tim_footer">
+	  <ul class="right">
+		<li><a href="https://github.com/{{username}}/{{reponame}}">{{username}}/{{reponame}}</a> updated <strong>{{updated_at}}</strong></li>
+	  </ul>
+	  <ul>
+		{{edit_link}}
+		<li><a href="https://github.com/{{username}}/{{reponame}}/issues/new">New Issue</a></li>
+		<li><a href="https://github.com/{{username}}/{{reponame}}/labels">Edit Labels</a></li>
+	  </ul>
+	</script>
+
+	<script type="text/tim" id="tim_milestone">- milestone <strong>{{title}}</strong>: {{description}}</script>
+
+	<script type="text/tim" id="tim_article_link">
+		<h2><a href='./#!{{number}}'>{{title}}</a></h2>
+		<blockquote>{{timedate}}{{html_labels}}</blockquote>
+	</script>
+
+	<script type="text/tim" id="tim_article_nolink">
+		<h2><span class="octicon octicon-chevron-left"></span> {{title}}</h2>
+		<blockquote>{{timedate}}{{html_labels}}</blockquote>
+	</script>
+
+	<script type="text/tim" id="tim_post_list">
+		<header>
+			<h2><a href='./#!{{number}}'>{{title}}</a></h2>
+			<blockquote>{{timedate}}<br>{{html_labels}}</blockquote>
+		</header>
+	</script>
+
+	<script type="text/tim" id="tim_issue">
+		<article>
+			<header>{{html_headerarticle}}</header>
+			{{body_html}}
+		</article>
+	</script>
+
+	<script type="text/tim" id=tim_pagetitle>{{pagetitle}}</script>
+
+	<!-- scripts -->
+	<script src="js/tinytim.min.js"></script>
+	<script src="js/ghre.js"></script>
+	<script src="js/main.js"></script>
   </body>
 </html>
