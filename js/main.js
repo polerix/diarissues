@@ -16,7 +16,7 @@ function create (tagname, attributes, content) {
 
 // Check local debug
 var	loc = window.location;
-if (loc.hostname == "127.0.0.1" || loc.hostname == "") loc = create('a', {href: 'https://petrosh.it/diarissues' + window.location.hash});
+if (loc.hostname == "127.0.0.1" || loc.hostname === "") loc = create('a', {href: 'https://petrosh.it/diarissues' + window.location.hash});
 
 // Vars
 var pathArray = loc.host.split( '.' ),
@@ -88,6 +88,8 @@ function renderIssues(){
 			}
 			obj.html_labels = labels;
 			obj.timedate = new Date(obj.created_at).toLocaleDateString('en-US', dateoptions);
+			// compressed with https://jakearchibald.github.io/svgomg/
+			if (obj.comments > 0) obj.timedate += '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><title>comment-discussion</title><path d="M15 1H6c-.55 0-1 .45-1 1v2H1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h1v3l3-3h4c.55 0 1-.45 1-1V9h1l3 3V9h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zM9 11H4.5L3 12.5V11H1V5h4v3c0 .55.45 1 1 1h3v2zm6-3h-2v1.5L11.5 8H6V2h9v6z" fill="#000" fill-rule="evenodd"/></svg> <sup>' + obj.comments + '</sup>';
 
 			// obj['html_milestone'] = tim(timmilestone, obj['milestone']);
 			obj.html_headerarticle = tim(timarticlelink, obj);
@@ -122,9 +124,18 @@ function renderPost(){
 				obj.html_headerarticle = tim(timarticlenolink, obj);
 				var article = tim(timissue, obj);
 				document.getElementsByTagName("section")[0].innerHTML += article;
+				if (obj.comments > 0) getAPI( ["repos", path.username, path.reponame, 'issues', obj.number, 'comments'].join('/'), renderComment );
 			}
 		}
 	}
+}
+
+function renderComment () {
+	var comments = JSON.parse(this.responseText);
+	document.getElementsByTagName("article")[0].innerHTML += '<h1>Comments</h1>';
+	comments.map(function (c) {
+		document.getElementsByTagName("article")[0].innerHTML += c.body_html;
+	});
 }
 
 // Check page

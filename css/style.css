@@ -45,6 +45,11 @@ span.language {
   border-radius: 50%;
 }
 
+/* Octicons as svg code */
+svg path {
+	fill: currentColor;
+}
+
 /* helpers */
 .right {
   float: right;
